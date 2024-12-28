@@ -171,7 +171,12 @@ jobs:
       run: .\python.bat -m test.pythoninfo
     - name: Tests
       run: .\PCbuild\rt.bat -p x64 -q -uall -u-cpu -rwW --slowest --timeout=1200 -j0
-
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: build-artifacts
+        path: |
+          PCbuild/amd64/
   build_macos:
     name: 'macOS'
     runs-on: macos-latest
